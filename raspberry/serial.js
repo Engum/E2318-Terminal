@@ -1,44 +1,41 @@
-const {SerialPort,ReadlineParser} = require("serialport");
+const { SerialPort } = require('serialport');
+const { ByteLengthParser } = require('@serialport/parser-byte-length');
+//const { ReadLineParser} = require('@serialport/parser-readline');
 
 console.log("Starting serial on RPi...");
 console.log("initializing...");
+
 const path_RPi = '/dev/tty';
 const SAM_path = path_RPi + 'AMA0';
-const IO_path = path_RPi + 'S0';
-
 const baud = 115200;
+const datasize = 1; // Define size of each packet according to the PetterPetterAS lora communication protocol system schematic.
 
-console.log(IO_path);
-const from_SAM = new SerialPort({
+const Serial_SAM = new SerialPort({
 path: SAM_path,
 baudRate: baud,
 });
 
-/*
-const from_IO = new SerialPort({
-path: IO_path,
-baudRate: baud,
-});
-*/
+const SAM_parser = new ByteLengthParser({length:datasize}) 
+Serial_SAM.pipe(SAM_parser);
 
-const parser = new ReadlineParser() 
-from_SAM.pipe(parser);
-
-parser.on('data',DataSAM);
-from_SAM.on('error',OnError);
-from_SAM.on('open',OnOpen);
+SAM_parser.on('data',Serial_SAM_RXD);
+Serial_SAM.on('error',Serial_SAM_Error);
+Serial_SAM.on('open',Serial_SAM_Open);
 
 
-function OnOpen(){
-	console.log("The port is open on: "+SAM_path)
+function Serial_SAM_Open(){
+	console.log("The port for SAM is open on: "+SAM_path)
 }
-function DataSAM(dataRX){
-	console.log("Data recieved:"+dataRX);
+function Serial_SAM_RXD(SAMdataRX){
+	console.log("Data recieved from SAM:"+SAMdataRX);
 }
 
-function OnError(){
+function Serial_SAM_Error(){
 	console.log("An error has occured!")
+	console.log("Check SAM's RXD/TXD line")
 }
+
+
 
 
 
