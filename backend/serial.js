@@ -5,14 +5,13 @@ const { express } = require('express');
 
 const app = express();
 
-app.post("/post", (req,res) => {
-	console.log("Connected")
-	res.redirect("/");
+app.get("/data", (req,res) => {
+	const data = {message: "Hello from message"};
+	res.json(data);
 });
 
-const port = process.env.port || 3001;
-
-app.listen(port, console.log("Server started on ${port}"));
+app.listen(3000,() => { console.log("Server started on 3000")
+});
 
 console.log("Starting serial on RPi...");
 console.log("initializing...");
