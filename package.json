@@ -1,0 +1,18 @@
+{
+  "name": "e2318-terminal",
+  "version": "0.1.0",
+  "description": "",
+  "main": "App.js",
+  "scripts": {
+    "start": "node backend/serial.js",
+    "start-dev": "react-scripts start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "serialport": "^10.5.0"
+  }
+}

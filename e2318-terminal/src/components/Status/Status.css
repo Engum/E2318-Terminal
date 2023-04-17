@@ -1,0 +1,16 @@
+.status-wrapper {
+  margin: 3% 0;
+}
+
+.status-wrapper h1 {
+  font-weight: 700;
+  font-size: 6vw;
+  margin-top: 2%;
+  margin-bottom: 5%;
+}
+
+.status-wrapper h2 {
+  font-weight: 600;
+  font-size: 3vw;
+  margin: 0;
+}
