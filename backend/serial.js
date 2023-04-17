@@ -1,17 +1,13 @@
 const { SerialPort } = require('serialport');
 const { ByteLengthParser } = require('@serialport/parser-byte-length');
-const { express } = require('express');
+const express = require("express");
 
+const PORT = process.env.PORT || 3001;
 
+const cors = require('cors')
 const app = express();
-
-app.get("/data", (req,res) => {
-	const data = {message: "Hello from message"};
-	res.json(data);
-});
-
-app.listen(3000,() => { console.log("Server started on 3000")
-});
+app.use(cors());
+var test_data = '';
 
 console.log("Starting serial on RPi...");
 console.log("initializing...");
@@ -35,19 +31,25 @@ Serial_SAM.on('open',Serial_SAM_Open);
 
 
 function Serial_SAM_Open(){
-	console.log("The port for SAM is open on: "+SAM_path)
+        console.log("The port for SAM is open on: "+SAM_path)
 }
 function Serial_SAM_RXD(SAMdataRX){
-	console.log("Data recieved from SAM:"+SAMdataRX);
+        //console.log("Data recieved from SAM:"+SAMdataRX);
+	test_data = SAMdataRX;
 }
+
+app.get("/api", async (req, res) =>{
+	res.send({RXdata: "" + test_data});
+	console.log(test_data);
+});
 
 function Serial_SAM_Error(){
-	console.log("An error has occured!")
-	console.log("Check SAM's RXD/TXD line")
+        console.log("An error has occured!")
+        console.log("Check SAM's RXD/TXD line")
 }
 
 
 
-
-
-
+app.listen(PORT, () => {
+	console.log(`Server listening on: ${PORT}`);
+})
