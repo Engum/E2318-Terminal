@@ -1,4 +1,4 @@
-import { FrontPage } from "./pages/FrontPage/FrontPage";
+import { FrontPage2} from "./pages/FrontPage/FrontPage";
 import "./App.css";
 import { OrderPage } from "./pages/OrderPage/OrderPage";
 import React from "react";
@@ -16,20 +16,23 @@ function App() {
   };
 
   React.useEffect(() => {
+    document.documentElement.requestFullscreen();
     const intervalID = setInterval(fetchData, 1000);
     return () => clearInterval(intervalID);
   }, []);
 
   React.useEffect(() => {
     switch (data) {
-      case "1": //button pressed at terminal Black
+      case "3":
         setButtonPressed(false);
+        setStatus(data);
         break;
-      case "3": //gate closed signal
+      case "4":
         setButtonPressed(true);
+        setStatus(data);
         break;
       default:
-        setStatus(data);
+        setStatus("Loading...");
         break;
     }
   }, [data]);

@@ -1,33 +1,21 @@
 import "./Status.css";
 import React from "react";
 
-export const Status = ({ status, place }) => {
-  const [data,setData] = React.useState("");
-
-  const fetchData = async() => {
-	  const response = await fetch('/api')
-	  const data = await response.json()
-	  setData(data.RXdata)
-	  console.log(data.RXdata)};
-  React.useEffect(() => {
-    const intervalID = setInterval(fetchData, 1000)
-    return () => clearInterval(intervalID);
-  }, []);
+export const Status = ({ message }) => {
   
   const dict = {
-  "4" : "Docking at Ravnkloa",
-  "5" : "Docking at Thomas",
-  "6" : "Docking at IDAR",
-  "7" : "Docking at MAGNUS",
-  "8" : "Docking at PETTER"
+  "4" : "Docking at Ravnkloa", 		//Docking complete RK
+  "5" : "Docking at Vestre Kanalkai",	//Docking complete VK
+  "6" : "Boarding at Ravnkloa", 	//Open gate RK
+  "7" : "Boarding at Vestre Kanalkai",	//Open gate VK
+  "8" : "Traveling to Ravnkloa",	//Boarding complete at VK
+  "9" : "Traveling to Vestre kanalkai",	//Boarding complete at BK
+  "0" : "Docking at PetterPetterASHQ"	//Placeholder
 }
 
   return (
     <div className="status-wrapper">
-      <h1>{dict[data]}</h1>
+      <h1>{dict[message]}</h1>
     </div>
   );
 };
-
-
-

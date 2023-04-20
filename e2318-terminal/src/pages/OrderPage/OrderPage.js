@@ -5,18 +5,13 @@ import "./OrderPage.css";
 import axios from "axios";
 import {useEffect,useState} from "react";
 
-
-export const OrderPage = () => {
-  const [data, setData] = useState(null);
-/*  useEffect(() => {
-axios.get('http://localhost:3000/data').then(response => {setData(response.data)}).catch(error => {console.error(error)});
-},[])*/
+export const OrderPage = ({ status }) => {
    return (
     <div className="op-wrapper flex-column" style={{ background: "#00509e" }}>
       <Header />
       <div>
         <img src={boat} alt="Boat Icon" style={{ height: "6vw" }} />
-        <Status status="THE FERRY IS DOCKING:" place={data} />
+        <Status message={status} />
         <h2>The ferry is on it's way!</h2>
       </div>
       <p className="read-more">
