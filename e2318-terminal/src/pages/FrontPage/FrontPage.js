@@ -4,13 +4,18 @@ import { Instruction } from "../../components/Instruction/Instruction";
 import "./FrontPage.css";
 
 export const FrontPage = () => {
+  const scrolldown = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth",
+    });
+  };
   return (
     <div className="fp-wrapper flex-column">
       <Header />
       <div>
-        <Instruction text="1. Press the button below " />
-        <Instruction text="2. Wait for the ferry to arrive" />
-        <Instruction text="3. Board the ferry and enjoy!" />
+        <Instruction />
+        <button onClick={scrolldown}></button>
       </div>
 
       <ButtonInformation />

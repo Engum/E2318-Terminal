@@ -13,5 +13,9 @@ export const Clock = () => {
       clearInterval(timerId);
     };
   }, []);
-  return <p className="clock">{date.toLocaleTimeString()}</p>;
+  return (
+    <p className="clock">
+      {date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+    </p>
+  );
 };

@@ -10,13 +10,18 @@ export const Header = () => {
       <img
         src={logo}
         alt="NTNU Logo"
-        style={{ heigth: "45vh", width: "45vh" }}
+        style={{ heigth: "auto", width: "35vh", marginTop: "-1%" }}
       />
       <div className="time flex-row">
         <img
           src={timeIcon}
           alt="Clock icon"
-          style={{ height: "4vh", width: "4vh", marginTop: "1%" }}
+          style={{
+            height: "3vh",
+            width: "3vh",
+            marginTop: "1%",
+            marginRight: "10%",
+          }}
         />
         <Clock />
       </div>

@@ -9,7 +9,7 @@ function App() {
   const [buttonPressed, setButtonPressed] = React.useState(false);
 
   const fetchData = async () => {
-    const response = await fetch('/api');
+    const response = await fetch("/api");
     const data = await response.json();
     setData(data.RXdata);
     console.log(data.RXdata);
@@ -36,9 +36,11 @@ function App() {
 
   return (
     <>
-      {buttonPressed ? <OrderPage status={status} /> : <FrontPage />}
+      <FrontPage />
+      <OrderPage />
     </>
   );
+  /* {buttonPressed ? <OrderPage status={status} /> : <FrontPage />} */
 }
 
 export default App;
