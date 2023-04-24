@@ -1,8 +1,6 @@
 import { Header } from "../../components/Header/Header";
 import { Status } from "../../components/Status/Status";
 import "./OrderPage.css";
-import axios from "axios";
-import { useEffect, useState } from "react";
 import ping from "../../assets/boat.svg";
 
 export const OrderPage = ({ status }) => {

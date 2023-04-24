@@ -3,13 +3,13 @@ import { Header } from "../../components/Header/Header";
 import { Instruction } from "../../components/Instruction/Instruction";
 import "./FrontPage.css";
 
-export const FrontPage = () => {
+export const FrontPage = ( {} ) => {
   const scrolldown = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: "smooth",
-    });
-  };
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: "smooth",
+      });
+  }
   return (
     <div className="fp-wrapper flex-column">
       <Header />

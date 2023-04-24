@@ -2,26 +2,33 @@ import { FrontPage } from "./pages/FrontPage/FrontPage";
 import "./App.css";
 import { OrderPage } from "./pages/OrderPage/OrderPage";
 import React from "react";
+import io from "socket.io-client";
+
+const socket = io("http://192.168.137.250:3001");
+console.log(socket); // add this line to log the socket object
 
 function App() {
-  const [data, setData] = React.useState("");
   const [status, setStatus] = React.useState("Loading...");
   const [buttonPressed, setButtonPressed] = React.useState(false);
+  const [RXdata, setRXdata] = React.useState(0);
 
-  const fetchData = async () => {
-    const response = await fetch("/api");
-    const data = await response.json();
-    setData(data.RXdata);
-    console.log(data.RXdata);
-  };
 
   React.useEffect(() => {
-    const intervalID = setInterval(fetchData, 1000);
-    return () => clearInterval(intervalID);
+    socket.on("SAM_data", (status) => {
+      console.log(status)
+      setStatus(status);
+    });
   }, []);
 
   React.useEffect(() => {
-    switch (data) {
+    socket.on("button_data", (buttonPressed) => {
+      //console.log(RXdata)
+      setButtonPressed(buttonPressed);
+    });
+  }, []);
+/*
+  React.useEffect(() => {
+    switch (RXdata) {
       case "1": //button pressed at terminal Black
         setButtonPressed(false);
         break;
@@ -29,18 +36,19 @@ function App() {
         setButtonPressed(true);
         break;
       default:
-        setStatus(data);
+        setStatus(RXdata);
         break;
     }
-  }, [data]);
-
+  }, [RXdata]);
+*/
   return (
     <>
-      <FrontPage />
-      <OrderPage />
+      <FrontPage Scroll={buttonPressed}/>
+      <OrderPage status={status} />
     </>
   );
   /* {buttonPressed ? <OrderPage status={status} /> : <FrontPage />} */
 }
 
 export default App;
+

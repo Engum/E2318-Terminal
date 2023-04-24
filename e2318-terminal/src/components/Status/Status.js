@@ -17,7 +17,7 @@ export const Status = ({ message }) => {
     <div className="status-wrapper">
       <h1>Terminal Ravkloa</h1>
       <img src={boat} alt="Boat Icon" style={{ height: "10vw" }} />
-      <h2>Docking at Ravkloa Terminal</h2>
+      <h2>{dict[message]}</h2>
     </div>
   );
   //<h1>{dict[message]}</h1>
