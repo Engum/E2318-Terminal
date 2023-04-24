@@ -12,11 +12,14 @@ export const Status = ({ message }) => {
     9: "Traveling to Vestre kanalkai", //Boarding complete at BK
     0: "Docking at PetterPetterASHQ", //Placeholder
   };
-
   return (
     <div className="status-wrapper">
       <h1>Terminal Ravkloa</h1>
-      <img src={boat} alt="Boat Icon" style={{ height: "10vw" }} />
+      <img
+        src={boat}
+        alt="Boat Icon"
+        style={{ height: "10vw", marginBottom: "0%" }}
+      />
       <h2>{dict[message]}</h2>
     </div>
   );

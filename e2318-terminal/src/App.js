@@ -12,10 +12,16 @@ function App() {
   const [buttonPressed, setButtonPressed] = React.useState(false);
   const [RXdata, setRXdata] = React.useState(0);
 
+  const scrolldown = (isPressed) => {
+    window.scrollTo({
+      top: isPressed ? window.innerHeight : -window.innerHeight,
+      behavior: "smooth",
+    });
+  };
 
   React.useEffect(() => {
     socket.on("SAM_data", (status) => {
-      console.log(status)
+      console.log(status);
       setStatus(status);
     });
   }, []);
@@ -24,9 +30,10 @@ function App() {
     socket.on("button_data", (buttonPressed) => {
       //console.log(RXdata)
       setButtonPressed(buttonPressed);
+      scrolldown(buttonPressed);
     });
   }, []);
-/*
+  /*
   React.useEffect(() => {
     switch (RXdata) {
       case "1": //button pressed at terminal Black
@@ -43,7 +50,7 @@ function App() {
 */
   return (
     <>
-      <FrontPage Scroll={buttonPressed}/>
+      <FrontPage />
       <OrderPage status={status} />
     </>
   );
@@ -51,4 +58,3 @@ function App() {
 }
 
 export default App;
-

@@ -4,12 +4,6 @@ import "./OrderPage.css";
 import ping from "../../assets/boat.svg";
 
 export const OrderPage = ({ status }) => {
-  const scrollup = () => {
-    window.scrollTo({
-      top: -window.innerHeight,
-      behavior: "smooth",
-    });
-  };
   return (
     <div className="op-wrapper flex-column">
       <Header />
@@ -17,9 +11,21 @@ export const OrderPage = ({ status }) => {
         <Status message={status} />
       </div>
       <div className="op-feedback">
-        <img alt="feedback-animation" src={ping} style={{ width: "7vw" }} />
+        <div className="ping-container">
+          <div
+            className="ping"
+            style={{
+              textAlign: "center",
+              fontSize: "3vw",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            ✓
+          </div>
+        </div>
         <h1>THE FERRY IS ON IT'S WAY!</h1>
-        <button onClick={scrollup}></button>
       </div>
       <p
         className="read-more"
