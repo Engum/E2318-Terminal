@@ -1,0 +1,61 @@
+.op-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: url(../../assets/background.svg);
+  justify-content: space-between;
+  background-size: contain;
+}
+
+.op-wrapper .read-more {
+  margin-bottom: 2%;
+  font-size: 1.5vw;
+}
+
+.op-feedback {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10%;
+}
+
+.op-feedback h1 {
+  font-size: 3.5vw;
+}
+
+.op-status {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.ping-container {
+  margin-top: 5%;
+  position: absolute;
+  left: 50%;
+  bottom: -80%;
+  transform: translate(-50%, 50%);
+}
+.ping {
+  background: #6ddc5a;
+  border-radius: 50%;
+  border: 50px solid #222;
+  width: 6vw;
+  height: 6vw;
+  animation: load 2s ease-out infinite;
+}
+
+@keyframes load {
+  0% {
+    background: #6ddc5a;
+    border: 0px solid rgba(0, 0, 0, 0.6);
+  }
+  40% {
+    background: #6ddc5a;
+    border: 25px solid rgba(0, 0, 0, 0.6);
+  }
+  100% {
+    background: #6ddc5a;
+    border: 0px solid rgba(0, 0, 0, 0.6);
+  }
+}
