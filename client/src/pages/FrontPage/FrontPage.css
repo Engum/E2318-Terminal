@@ -1,0 +1,6 @@
+.fp-wrapper {
+  height: 100vh;
+  background: url(../../assets/background.svg);
+  justify-content: space-between;
+  background-size: contain;
+}
