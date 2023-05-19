@@ -8,7 +8,7 @@ const socket = io("http://localhost:3001");
 console.log(socket); // add this line to log the socket object
 
 function App() {
-  const [status, setStatus] = useState("Loading...");
+  const [status, setStatus] = useState("0");
 
   const scrolldown = (isPressed) => {
     window.scrollTo({

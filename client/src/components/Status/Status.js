@@ -6,8 +6,9 @@ export const Status = ({ message }) => {
   const dict = {
     "72": "Boarding at Ravnkloa", //TEAID_GCMD_OPEN_RK
     "b2": "Boarding at Vestre Kanalkai", //TEBID_GCMD_OPEN VK
-    "bb": "Traveling to Ravnkloa", //BCOMP at VK
-    "7b": "Traveling to Vestre kanalkai", //BCOMP at RK
+    "bc": "Traveling to Ravnkloa", //BCOMP at VK
+    "7c": "Traveling to Vestre kanalkai", //BCOMP at RK
+    "0" : "Loading..."
   };
   return (
     <div className="status-wrapper">
